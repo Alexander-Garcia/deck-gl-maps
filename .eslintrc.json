@@ -1,12 +1,14 @@
 {
     "env": {
       "browser": true,
-      "es2021": true
+      "es2021": true,
+      "jest": true
     },
     "extends": [
-      "eslint:recommended",
+      "airbnb",
       "plugin:react/recommended",
-      "plugin:react/jsx-runtime"
+      "plugin:react/jsx-runtime",
+      "plugin:prettier/recommended"
     ],
     "overrides": [
     ],
@@ -19,7 +21,20 @@
       "react-hooks"
     ],
     "rules": {
+      "indent": ["off"],
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 1
+        }
+      ],
       "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn"
+      "react-hooks/exhaustive-deps": "warn",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [".js", ".jsx"]
+        }
+      ]
     }
 }
