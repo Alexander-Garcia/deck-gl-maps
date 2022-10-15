@@ -2,26 +2,7 @@ import { useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import Select from '@mui/material/Select';
-
-const containerStyles = {
-  display: 'flex',
-  position: 'relative',
-  zIndex: 100,
-  width: 250,
-  height: '100vh',
-};
-
-const paperRoot = {
-  display: 'flex',
-  justifyContent: 'space-around',
-  width: '250px',
-};
-
-const selectStyle = {
-  height: '50px',
-  margin: '20px',
-  width: '200px',
-};
+import { containerStyle, paperStyle, selectStyle } from '../styles';
 
 function Sidebar() {
   const [selection, setSelection] = useState('population');
@@ -31,8 +12,8 @@ function Sidebar() {
   };
 
   return (
-    <div style={containerStyles}>
-      <Paper elevation={3} sx={paperRoot}>
+    <div style={containerStyle}>
+      <Paper elevation={3} sx={paperStyle}>
         <Select onChange={handleChange} sx={selectStyle} value={selection}>
           <MenuItem value="population">Population</MenuItem>
           <MenuItem value="averageIncome">Average Income</MenuItem>
