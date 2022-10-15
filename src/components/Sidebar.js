@@ -1,32 +1,43 @@
 import { useState } from 'react';
-import Button from '@mui/material/Button';
-import Drawer from '@mui/material/Drawer';
+import MenuItem from '@mui/material/MenuItem';
+import Paper from '@mui/material/Paper';
+import Select from '@mui/material/Select';
 
-const containerStyle = {
-  left: 10,
+const containerStyles = {
+  display: 'flex',
   position: 'relative',
-  top: 10,
-  width: 150,
-  zIndex: 1000,
+  zIndex: 100,
+  width: 250,
+  height: '100vh',
 };
 
-const drawerClass = {
-  width: 300,
+const paperRoot = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  width: '250px',
+};
+
+const selectStyle = {
+  height: '50px',
+  margin: '20px',
+  width: '200px',
 };
 
 function Sidebar() {
-  const [isToggled, setIsToggled] = useState(false);
+  const [selection, setSelection] = useState('population');
 
-  const onClick = () => setIsToggled(!isToggled);
+  const handleChange = (event) => {
+    setSelection(event.target.value);
+  };
 
   return (
-    <div style={containerStyle}>
-      <Button onClick={onClick} variant="contained">
-        Open Drawer
-      </Button>
-      <Drawer anchor="left" open={isToggled} onClose={onClick} sx={drawerClass}>
-        <div>hello world</div>
-      </Drawer>
+    <div style={containerStyles}>
+      <Paper elevation={3} sx={paperRoot}>
+        <Select onChange={handleChange} sx={selectStyle} value={selection}>
+          <MenuItem value="population">Population</MenuItem>
+          <MenuItem value="averageIncome">Average Income</MenuItem>
+        </Select>
+      </Paper>
     </div>
   );
 }
